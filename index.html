@@ -156,24 +156,6 @@
 		</div>
 	</div>
 
-	<section id="app">
-		<div class="container">
-		  <div class="row">
-			<div class="col-6">
-			  <div class="comment">
-			<p v-for="items in item" v-text="items"></p>
-			  </div><!--End Comment-->
-			  </div><!--End col -->
-			  </div><!-- End row -->
-		  <div class="row">
-			<div class="col-6">
-		  <textarea type="text" class="input" placeholder="Write a comment" v-model="newItem" @keyup.enter="addItem()"></textarea>
-			  <button v-on:click="addItem()" class='primaryContained float-right' type="submit">Add Comment</button>
-			</div><!-- End col -->
-		  </div><!--End Row -->
-		</div><!--End Container -->
-	  </section><!-- end App -->
-
 	<!-- Quote -->
 	<div class="quote">
 		<div class="container text-centered">
@@ -214,31 +196,6 @@
 		strings: ["Beautiful City of Pune", "your galaxy", "everywhere"],
 
 		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
-		$(document).ready(function(){ 
- 
- $(".primaryContained").on('click', function(){
- $(".comment").addClass("commentClicked");
-});//end click
-$("textarea").on('keyup.enter', function(){
- $(".comment").addClass("commentClicked");
-});//end keyup
-});//End Function
-
-new Vue({
- el: "#app",
- data:{
-	title: 'Add a comment',
-   newItem: '',
-   item: [],
- },
- methods:{
-   addItem  (){
-   this.item.push(this.newItem);
-	 this.newItem = "";
-   }
-}
-
-});
-	</script>
+   </script>
 </body>
 </html>
