@@ -97,14 +97,14 @@
 			</ul>
 			<ul class="award-list list-flat">
 				<li>October 2017</li>
-				<li>Employee of the month</li>
+				<li>Employee of the month/li>
 				<li>Held a perfect attendance record</li>
 				<li>Were promoted after only 18 months in the role</li>
 			</ul>
 			<ul class="award-list list-flat">
 				<li>March 2014</li>
 				<li>Achieved seamless migration from Web to Responsive Web Design</li>
-				<li>Earning recognition and attracting employee inquiries for onsite opportunities</li>
+				<li>earning recognition and attracting employee inquiries for onsite opportunities</li>
 			</ul>
 		</div>
 	</div>
@@ -116,32 +116,22 @@
 			<ul class="award-list list-flat">
 				<li>Feb 2024</li>
 				<li>AI Prompting Essentials Certified</li>
-				<li><a href="https://www.proprofs.com/quiz-school/user_certificate.php?id=331595549&qid=3809416"><i class="fa">Credentials</i></a></li>
-			</ul>
-			<ul class="award-list list-flat">
-				<li>Feb 2024</li>
-				<li>Data Science 101</li>
-				<li><a href="https://courses.cognitiveclass.ai/certificates/6d1a5563b17b447db087ad488fc27970"><i class="fa">Credentials</i></a></li>
 			</ul>
 			<ul class="award-list list-flat">
 				<li>Feb 2024</li>
 				<li>Agile Scrum Foundation</li>
-				<li><a href="https://simpli-web.app.link/e/t5WERS5IUGb"><i class="fa">Credentials</i></a></li>
 			</ul>
 			<ul class="award-list list-flat">
 				<li>Feb 2024</li>
 				<li>Docker Essentials - A Developer Introduction</li>
-				<li><a href="https://courses.cognitiveclass.ai/certificates/d9e6bc7bdb4b4c5191c988b2ce731831"><i class="fa">Credentials</i></a></li>
 			</ul>
 			<ul class="award-list list-flat">
 				<li>Feb 2024</li>
 				<li>Project Management Essentials</li>
-				<li><a href="https://www.proprofs.com/quiz-school/user_certificate.php?id=331567986&qid=3593197"><i class="fa">Credentials</i></a></li>
 			</ul>
 			<ul class="award-list list-flat">
 				<li>December 2021</li>
 				<li>Certified SAFe® 5 Practitioner</li>
-				<li><a href="https://www.credly.com/badges/763cbfae-fc9e-4d59-895d-49786ea8d9be?source=linked_in_profile"><i class="fa">Credentials</i></a></li>
 			</ul>
 		</div>
 	</div>
@@ -161,10 +151,28 @@
 			</ul>
 			<ul class="skill-list list-flat">
 				<li>Framework</li>
-				<li>Java / Struts / SpringBoot / Django / Spring MVC</li>
+				<li>Struts / SpringBoot / Django / Spring MVC</li>
 			</ul>
 		</div>
 	</div>
+
+	<section id="app">
+		<div class="container">
+		  <div class="row">
+			<div class="col-6">
+			  <div class="comment">
+			<p v-for="items in item" v-text="items"></p>
+			  </div><!--End Comment-->
+			  </div><!--End col -->
+			  </div><!-- End row -->
+		  <div class="row">
+			<div class="col-6">
+		  <textarea type="text" class="input" placeholder="Write a comment" v-model="newItem" @keyup.enter="addItem()"></textarea>
+			  <button v-on:click="addItem()" class='primaryContained float-right' type="submit">Add Comment</button>
+			</div><!-- End col -->
+		  </div><!--End Row -->
+		</div><!--End Container -->
+	  </section><!-- end App -->
 
 	<!-- Quote -->
 	<div class="quote">
@@ -196,13 +204,41 @@
 	<script src="js/typed.min.js"></script>
     <script src="js/kube.min.js"></script>
     <script src="js/site.js"></script>
-    <script src="js/script.js"></script>
+	<!-- Vue JS -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+	<!-- jQuery -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script>
 		function newTyped(){}$(function(){$("#typed").typed({
 		// Change to edit type effect
 		strings: ["Beautiful City of Pune", "your galaxy", "everywhere"],
 
 		typeSpeed:90,backDelay:700,contentType:"html",loop:!0,resetCallback:function(){newTyped()}}),$(".reset").click(function(){$("#typed").typed("reset")})});
-    </script>
+		$(document).ready(function(){ 
+ 
+ $(".primaryContained").on('click', function(){
+ $(".comment").addClass("commentClicked");
+});//end click
+$("textarea").on('keyup.enter', function(){
+ $(".comment").addClass("commentClicked");
+});//end keyup
+});//End Function
+
+new Vue({
+ el: "#app",
+ data:{
+	title: 'Add a comment',
+   newItem: '',
+   item: [],
+ },
+ methods:{
+   addItem  (){
+   this.item.push(this.newItem);
+	 this.newItem = "";
+   }
+}
+
+});
+	</script>
 </body>
 </html>
