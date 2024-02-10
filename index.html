@@ -182,9 +182,9 @@
 			</ul>
 		</div>
 	</div>
-  
-	<div class="comments container">
 
+	<div class="comments container">
+		<script>getComments();</script>
 	</div>
 	<textarea class="comments container" placeholder="What's on your mind?" id="field"></textarea><br />
 	<div class="container"><input type="button" value="Post" class="btnp" />
@@ -249,7 +249,37 @@
 
 			}
 		}); </script>
- 
+
+	<script>
+		const { Pool } = require('pg');
+
+		// Create a new pool instance
+		const pool = new Pool({
+			connectionString: process.env.POSTGRES_URL,
+			ssl: {
+				rejectUnauthorized: false // For self-signed certificates, remove this in production
+			}
+		});
+
+		// Query function to execute SQL queries
+		async function query(text, params) {
+			const client = await pool.connect();
+			try {
+				const result = await client.query(text, params);
+				return result.rows;
+			} finally {
+				client.release();
+			}
+		}
+
+		// Example usage:
+		async function getComments() {
+			const result = await query('SELECT * FROM comments ');
+			return result[0]; // Assuming id is unique, return the first result
+		}
+
+	</script>
+
 
 </body>
 
