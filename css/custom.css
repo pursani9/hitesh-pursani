@@ -158,4 +158,38 @@ footer {
       color: #999999; }
 
       
-
+      #field{
+        width:400px;
+        height:70px;
+        border-radius:5px;
+        border:none;
+        outline:none;
+        padding:10px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .btnp{
+        border-radius:5px;
+        border:none;
+        padding:10px;
+        font-size:20px;
+        padding-right:20px;
+        padding-left:20px;
+        font-family: 'Open Sans', sans-serif;
+        cursor:pointer;
+      }
+      .comments div{
+        background:#333;
+        color:#efefef;
+        padding:10px;
+          font-family: 'Open Sans', sans-serif;
+        border-radius:5px;
+      border:3px solid #000;
+        width:400px;
+        margin-bottom:30px;
+      }
+      body{
+            font-family: 'Open Sans', sans-serif;
+      
+          background:#efefef;
+        margin:30px;
+      }
