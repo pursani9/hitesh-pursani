@@ -54,17 +54,17 @@
 					Authorization: 'Bearer p.eyJ1IjogImIwMTNhZDlmLTcwY2ItNDMxNi04YzI1LWIwZDFjM2RiOTY1MiIsICJpZCI6ICJhMmI4OTk1NS00YWE5LTQ3OWUtYWY0NS0yYTJkMjgxOTQyNDYiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.DD5Pumpq9trhoPRb2GDndwUyUMmu0-z2MwgZRT26mA8'
 				}
 			})
-				.then(r => r.json())
-				.then(r => r)
-				.catch(e => e.toString())
+				.then(r2 => r2.json())
+				.then(r2 => r2)
+				.catch(e2 => e2.toString())
 
 			if (!result2.data) {
 				console.error(`there is a problem running the query: ${result2}`);
 			} else {
 				console.table(result2.data)
 				console.log("** Query columns **")
-				for (let column of result2.meta) {
-					console.log(`${column.name} -> ${column.type}`)
+				for (let column2 of result2.meta) {
+					console.log(`${column2.name} -> ${column2.type}`)
 				}
 			}
 
