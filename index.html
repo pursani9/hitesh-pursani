@@ -20,6 +20,30 @@
 			content: 'Hitesh';
 		}
 	</style>
+	<script>
+		let url = new URL(`https://api.tinybird.co/v0/pipes/top_pages.json`)
+
+			url.searchParams.append('limit', '50')
+
+			const result = await fetch(url, {
+			  headers: {
+			   Authorization: 'Bearer p.eyJ1IjogImIwMTNhZDlmLTcwY2ItNDMxNi04YzI1LWIwZDFjM2RiOTY1MiIsICJpZCI6ICJhMmI4OTk1NS00YWE5LTQ3OWUtYWY0NS0yYTJkMjgxOTQyNDYiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.DD5Pumpq9trhoPRb2GDndwUyUMmu0-z2MwgZRT26mA8'
+			  }
+		}) 
+			  .then(r => r.json())
+			  .then(r => r)
+			  .catch(e => e.toString())
+
+		if (!result.data) {
+			  console.error(`there is a problem running the query: ${result}`);
+		} else {
+			  console.table(result.data)
+			  console.log("** Query columns **")
+			  for (let column of result.meta) {
+				console.log(`${column.name} -> ${column.type}`)
+		  }
+	}
+	</script>
 </head>
 
 <body>
@@ -334,30 +358,7 @@
 
 			}
 		}); </script>
-		<script>
-			let url = new URL(`https://api.tinybird.co/v0/pipes/top_pages.json`)
-
-				url.searchParams.append('limit', '50')
-
-				const result = await fetch(url, {
-  				headers: {
-   				Authorization: 'Bearer p.eyJ1IjogImIwMTNhZDlmLTcwY2ItNDMxNi04YzI1LWIwZDFjM2RiOTY1MiIsICJpZCI6ICJhMmI4OTk1NS00YWE5LTQ3OWUtYWY0NS0yYTJkMjgxOTQyNDYiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.DD5Pumpq9trhoPRb2GDndwUyUMmu0-z2MwgZRT26mA8'
-  				}
-			}) 
-			  	.then(r => r.json())
-  				.then(r => r)
-  				.catch(e => e.toString())
-
-			if (!result.data) {
-  				console.error(`there is a problem running the query: ${result}`);
-			} else {
-  				console.table(result.data)
-  				console.log("** Query columns **")
-  				for (let column of result.meta) {
-    				console.log(`${column.name} -> ${column.type}`)
-  			}
-		}
-		</script>
+		
 
 
 </body>
